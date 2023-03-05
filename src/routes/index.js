@@ -1,6 +1,4 @@
-const express = requiere("express");
-const ventas_routes_http = require("./ventas.routes");
-const { route } = require("./ventas.routes");
+const express = require("express");
 const ventas_routes_access = require("./ventas.routes");
 const routes = express.Router();
 

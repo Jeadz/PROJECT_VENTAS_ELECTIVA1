@@ -1,0 +1,62 @@
+### 
+POST http://localhost:5000/api/v1/ventas HTTP/1.1
+Content-Type: application/json
+
+{
+   "client":{
+        "id_client": 1234,
+        "name": "Juan",
+        "addres": {
+            "city":"Manizales",
+            "birthday": "2000/12/28",
+            "code_zip":"17001"
+        }
+   },
+
+   "invoice":{
+        "articles":{
+            "product":["T-Shirt","Shoes","Dress"],
+            "amount":["1,2,1"],
+            "price":["100,1000,300"]
+        },
+        "pay":{"cash": true}
+   }
+}
+
+###
+GET http://localhost:5000/api/v1/ventas  HTTP/1.1
+
+###
+GET http://localhost:5000/api/v1/ventas/ HTTP/1.1
+
+###
+PUT http://localhost:5000/api/v1/ventas/ HTTP/1.1
+Content-Type: application/json
+
+
+{
+   "client":{
+        "id_client": 1234,
+        "name": "Juan Duque",
+        "addres": {
+            "city":"Manizales",
+            "birthday": "2000/12/28",
+            "code_zip":"17001"
+        }
+   },
+
+   "invoice":{
+        "articles":{
+            "product":["T-Shirt","Shoes","Dress"],
+            "amount":["1,2,1"],
+            "price":["100,1000,300"]
+        },
+        "pay":{"cash": true}
+   }
+}
+
+###
+DELETE http://localhost:5000/api/v1/ventas/ HTTP/1.1
+
+###
+DELETE http://localhost:5000/api/v1/ventas/  HTTP/1.1

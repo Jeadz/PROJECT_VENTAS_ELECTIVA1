@@ -2,49 +2,41 @@ const mongoose = require("mongoose");
 const ventas_schema = mongoose.Schema({
 
     client: {
-        type : Object,
-        require : true,
-        id_client : {type: Number, require:true, unique: true},
-        name : {type: String, require: true},
-        addres:{
-            type : Object,
-            require : true,
-            city: {type: String, require: true},
-            code_zip: {type: String, require: true},
+        type: Object,
+        requiere:true,
+        id_client:{type:Number,require:true,unique:true},
+        name:{type:String, require:true},
+        addres: {
+            type: Object,
+            city: {type: String, require:true},
+            birthday: {type: Date('YYY/MM/DD'), requiere:true},
+            code_zip: {type: Number,requiere: true},
+        },
+    },
+
+    invoice:{
+        type:Object,
+        require:true,
+        date_invoice:{type:Date('YYY/MM/DD'), require:true},
+        articles:{
+            product:{type:Array, require:true},
+            amount:{type:Array, require:true},
+            price:{type:Array,require:true},
+        },
+        pay:{
+            type:Object,
+            require: true,
+            PSE:{type:Boolean, require:false},
+            cash:{type:Boolean, require:false},
+            credit:{
+                type:Object,
+                require:false,
+                titular:{type:String,require:true},
+                number_card:{type:Number,require:true},
+                CVC:{type:Number,requiere:true},
+                date_card:{type:Date('YYY/MM/DD')},
+            },
         }
     },
-
-    bill_number: {
-        type : Object,
-        require: true,
-        unique: true,
-        product: {
-            type: Object,
-            require: true,
-            name : {type : String, require: true},
-            amount : {type : Number, require : true},
-            price : {type: Number, require: true},
-        },
-    },
-
-    pay_type: {
-        type : Object,
-        require : true,
-        ways: {
-            type: Object,
-            require: true,
-            PSE:{type: Number, require: false},
-            cash:{type: Number, requiere:false},
-            credit:{
-                type: Object,
-                requiere: false,
-                card_number: {type: Number, requiere: true},
-                titular_name:{type: String, requiere: true},
-                date_card: { type: Date, requiere: true},
-                pass_card : {type: Number, require:true},
-            },
-        },
-    },
-
 });
 module.exports = mongoose.model("VentasCollection", ventas_schema);
