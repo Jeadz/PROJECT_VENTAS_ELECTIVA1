@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const ventas_schema = mongoose.Schema({
 
+    store_name : {type:String, requiere:true},
     client: {
         type: Object,
         requiere:true,
@@ -26,7 +27,7 @@ const ventas_schema = mongoose.Schema({
         pay:{
             type:Object,
             require: true,
-            PSE:{type:Boolean, require:false},
+            PSE:{type:String, require:false},
             cash:{type:Boolean, require:false},
             credit:{
                 type:Object,

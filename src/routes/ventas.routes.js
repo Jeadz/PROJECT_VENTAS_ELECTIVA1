@@ -46,13 +46,13 @@ ventas_routes_http.get("/:ventaId", (req,res) => {
  * mongoose method: updateOne
  */
 
-ventas_routes_http.put("/:ventaId", (req,res) =>{
-    const {ventaId} = req.params;
-    const {client,invoice} = req.body;
+ventas_routes_http.put("/:ventasId", (req,res) =>{
+    const {ventasId} = req.params;
+    const {store_name,client,invoice} = req.body;
     ventas_model
         .updateOne(
-            { _id: ventaId },
-            { $set: {client, invoice}}
+            { _id: ventasId },
+            { $set: {store_name,client, invoice}}
         )
         .then((data) => res.json(data))
         .catch((err) => res.json({ message: err }));
@@ -80,8 +80,8 @@ ventas_routes_http.delete("/:ventaId", (req, res) => {
  * mongoose method: deleteMany
  */
 
-ventas_routes_http.delete("/", (req,res) => {
-    const query = { ventas: {$regx: 1234 }};
+ventas_routes_http.delete("/", (req, res) => {
+    const query = { store_name : { $regex: "Falabella Colombia" }};
     ventas_model
         .deleteMany(query)
         .then((data) => res.json(data))
